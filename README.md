@@ -26,6 +26,8 @@ Ejemplo de uso
 
 Solo ejecuta el script, introduce el dominio objetivo y deja que la herramienta haga el resto. Al finalizar, tendrás un conjunto completo de resultados para comenzar tu análisis de seguridad.
 
+https://github.com/HackingTeamOficial/hlahaploker/blob/main/photo_2025-05-04_00-04-36.jpg
+
 En la proxima revision se automatizara mas herramientas que la comunidad vaya integrando como tecnicas Osint 
 
 Nuestras RRSS
