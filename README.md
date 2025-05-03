@@ -1,127 +1,29 @@
-# ParamSpider: Parameter miner for humans
 
-![ParamSpider](https://raw.githubusercontent.com/0xKayala/ParamSpider/master/static/banner.PNG)
+🚀 Herramienta de Automatización para Pentesting Web 🚀
 
+Hola comunidad, quiero compartir con ustedes una herramienta que he desarrollado para facilitar y acelerar el proceso de reconocimiento y escaneo en pruebas de penetración web. Esta herramienta automatiza varias fases clave usando herramientas reconocidas en el mundo del hacking ético.
+¿Qué hace esta herramienta?
 
-## Key Features:
+    Realiza un escaneo inicial con nmap para identificar servicios y versiones.
+    Recolecta URLs relevantes del objetivo usando gau, gauplus, hakrawler y waybackurls.
+    Encuentra parámetros potenciales con ParamSpider.
+    Combina y filtra URLs únicas para un análisis más eficiente.
+    Verifica la disponibilidad y estado de las URLs con httpx.
+    Realiza escaneos profundos con katana y nuclei para detectar vulnerabilidades.
+    Ejecuta pruebas básicas de inyección SQL con sqlmap.
+    Sugiere el uso manual de Metasploit para explotación avanzada.
+    
+¿Por qué es útil?
 
-- Finds parameters from web archives of the entered domain.
+Esta herramienta centraliza y automatiza tareas que normalmente se hacen manualmente, ahorrando tiempo y asegurando que no se omitan pasos importantes en el reconocimiento. Además, guarda todos los resultados organizados en carpetas con timestamp para facilitar el análisis posterior.
+¿Qué necesitas para usarla?
 
-- Finds parameters from subdomains as well.
+    Tener instaladas las herramientas mencionadas (nmap, gau, hakrawler, waybackurls, ParamSpider, httpx, katana, nuclei, sqlmap, Metasploit).
+    Permisos y autorización para realizar pruebas en el dominio objetivo.
+    Python 3 para ejecutar el script.
 
-- Gives support to exclude urls with specific extensions.
+Ejemplo de uso
 
-- Saves the output result in a nice and clean manner.
+Solo ejecuta el script, introduce el dominio objetivo y deja que la herramienta haga el resto. Al finalizar, tendrás un conjunto completo de resultados para comenzar tu análisis de seguridad.
 
-- It mines the parameters from web archives (without interacting with the target host)
-
-  
-
-## Usage instructions:
-
-```
-Note: Use python 3.7+
-
-$ git clone https://github.com/0xKayala/ParamSpider
-$ cd ParamSpider
-$ pip3 install -r requirements.txt
-$ python3 paramspider.py --domain hackerone.com
-```
-
-  
-
-## Usage options :
-
-```
-1 - For a simple scan [without the --exclude parameter]
-$ python3 paramspider.py --domain hackerone.com
--> Output ex : https://hackerone.com/test.php?q=FUZZ
-
-2 - For excluding urls with specific extensions
-$ python3 paramspider.py --domain hackerone.com --exclude php,jpg,svg
-
-3 - For finding nested parameters
-$ python3 paramspider.py --domain hackerone.com --level high
--> Output ex : https://hackerone.com/test.php?p=test&q=FUZZ
-
-4 - Saving the results
-$ python3 paramspider.py --domain hackerone.com --exclude php,jpg --output hackerone.txt
-
-5 - Using with a custom placeholder text (default is FUZZ), e.g. don't add a placeholder
-$ python3 paramspider.py --domain hackerone.com --placeholder FUZZ2
-
-6 - Using the quiet mode (without printing the URLs on screen)
-$ python3 paramspider.py --domain hackerone.com --quiet
-
-7 - Exclude subdomains [for parameters from domain+subdomains, do not specify this argument]
-$ python3 paramspider.py --domain hackerone.com --subs False 
-```
-
-## ParamSpider + GF (for massive pwnage)
-
-  
-
-Let's say you have already installed ParamSpider and now you want to filter out the juicy parameters from plethora of parameters. No worries you can easily do it using [GF(by tomnomnom)](https://github.com/tomnomnom/gf) .
-
-  
-
-**Note** : Make sure you have [go](https://golang.org/doc/install) properly installed on your machine .
-
-  
-
-**Follow along this:**
-
-```
-$ go get -u github.com/tomnomnom/gf
-$ cp -r $GOPATH/src/github.com/tomnomnom/gf/examples ~/.gf
-
-Note: Replace '/User/levi/go/bin/gf' with the path where gf binary is located in your system.
-
-$ alias gf='/User/levi/go/bin/gf'
-$ cd ~/.gf/
-
-Note: Paste JSON files(https://github.com/0xKayala/ParamSpider/tree/master/gf_profiles) in ~/.gf/ folder
-
-Now run ParamSpider and navigate to the output directory
-
-$ gf redirect domain.txt //for potential open redirect/SSRF parameters
-$ gf xss domain.txt //for potential xss vulnerable parameters
-$ gf potential domain.txt //for xss + ssrf + open redirect parameters
-$ gf wordpress domain.txt //for wordpress urls
-
-[More GF profiles to be added in future]
-```
-
-
-## Example :
-
-```
-$ python3 paramspider.py --domain bugcrowd.com --exclude woff,css,js,png,svg,php,jpg --output bugcrowd.txt
-```
-  
-
-![](https://raw.githubusercontent.com/0xKayala/ParamSpider/master/static/example.PNG)
-
-  
-### Note :
-
-```
-As it fetches the parameters from web archive data,
-so chances of false positives are high.
-```
-
-## Contributing to ParamSpider:
-
- - Report bugs, missing best practices 
- - Shoot my [DM](https://twitter.com/0xAsm0d3us) with new ideas 
- - Make more GF profiles (.json files)
- - Help in Fixing bugs
- - Submit Pull requests 
-
- 
-  
-
-### My Twitter :
-
-
-**Say hello** : [0xAsm0d3us](https://twitter.com/0xAsm0d3us)
+En la proxima revision se automatizara mas herramientas que la comunidad vaya integrando como tecnicas Osint 
