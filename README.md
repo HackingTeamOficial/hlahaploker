@@ -28,7 +28,14 @@ Solo ejecuta el script, introduce el dominio objetivo y deja que la herramienta 
 
 https://github.com/HackingTeamOficial/hlahaploker/blob/main/photo_2025-05-04_00-04-36.jpg
 
+si tienen error cree un archivo en bash con la ruta donde tenemos el paramspider en mi caso Go/Bin y ParamSpider.py hay lo automatizara sin problema 
+
+#!/bin/bash
+python3 /home/kali/go/bin/paramspider.py "$@"
+
 En la proxima revision se automatizara mas herramientas que la comunidad vaya integrando como tecnicas Osint 
+
+Happy Hacking
 
 Nuestras RRSS
 
