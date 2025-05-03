@@ -1,64 +1,127 @@
-🚀 Herramienta de Automatización para Pentesting Web 🚀
+# ParamSpider: Parameter miner for humans
 
-Hola comunidad, quiero compartir con ustedes una herramienta que he desarrollado para facilitar y acelerar el proceso de reconocimiento y escaneo en pruebas de penetración web. Esta herramienta automatiza varias fases clave usando herramientas reconocidas en el mundo del hacking ético.
-¿Qué hace esta herramienta?
+![ParamSpider](https://raw.githubusercontent.com/0xKayala/ParamSpider/master/static/banner.PNG)
 
-    Realiza un escaneo inicial con nmap para identificar servicios y versiones.
-    Recolecta URLs relevantes del objetivo usando gau, gauplus, hakrawler y waybackurls.
-    Encuentra parámetros potenciales con ParamSpider.
-    Combina y filtra URLs únicas para un análisis más eficiente.
-    Verifica la disponibilidad y estado de las URLs con httpx.
-    Realiza escaneos profundos con katana y nuclei para detectar vulnerabilidades.
-    Ejecuta pruebas básicas de inyección SQL con sqlmap.
-    Sugiere el uso manual de Metasploit para explotación avanzada.
 
-¿Por qué es útil?
+## Key Features:
 
-Esta herramienta centraliza y automatiza tareas que normalmente se hacen manualmente, ahorrando tiempo y asegurando que no se omitan pasos importantes en el reconocimiento. Además, guarda todos los resultados organizados en carpetas con timestamp para facilitar el análisis posterior.
-¿Qué necesitas para usarla?
+- Finds parameters from web archives of the entered domain.
 
-    Tener instaladas las herramientas mencionadas (nmap, gau, hakrawler, waybackurls, ParamSpider, httpx, katana, nuclei, sqlmap, Metasploit).
-    Permisos y autorización para realizar pruebas en el dominio objetivo.
-    Python 3 para ejecutar el script.
+- Finds parameters from subdomains as well.
 
-Ejemplo de uso
+- Gives support to exclude urls with specific extensions.
 
-Solo ejecuta el script, introduce el dominio objetivo y deja que la herramienta haga el resto. Al finalizar, tendrás un conjunto completo de resultados para comenzar tu análisis de seguridad.
+- Saves the output result in a nice and clean manner.
 
-Proximamente se le integrara mas herramientas por parte de la comunidad Hacking Team lo cual Facilitara el mejor analisis automatizado y integracion de herramientas para tecnicas Osint
+- It mines the parameters from web archives (without interacting with the target host)
 
-Nuestras RRSS
+  
 
-Telegram
+## Usage instructions:
 
-https://t.me/+YWhDjkfmSQ9jY2Jk
+```
+Note: Use python 3.7+
 
-https://t.me/+74d-97oV7P05OTVk
+$ git clone https://github.com/0xKayala/ParamSpider
+$ cd ParamSpider
+$ pip3 install -r requirements.txt
+$ python3 paramspider.py --domain hackerone.com
+```
 
-https://t.me/+llcmNGzz6JIyMmI0
+  
 
-https://t.me/PlantillasNucleiHackingTeam
+## Usage options :
 
-https://t.me/TermuxHackingTeam
+```
+1 - For a simple scan [without the --exclude parameter]
+$ python3 paramspider.py --domain hackerone.com
+-> Output ex : https://hackerone.com/test.php?q=FUZZ
 
-https://t.me/+-RIgaFP12_RhNTk0
+2 - For excluding urls with specific extensions
+$ python3 paramspider.py --domain hackerone.com --exclude php,jpg,svg
 
-X
+3 - For finding nested parameters
+$ python3 paramspider.py --domain hackerone.com --level high
+-> Output ex : https://hackerone.com/test.php?p=test&q=FUZZ
 
-@HackingTeam777
+4 - Saving the results
+$ python3 paramspider.py --domain hackerone.com --exclude php,jpg --output hackerone.txt
 
-Bluesky
+5 - Using with a custom placeholder text (default is FUZZ), e.g. don't add a placeholder
+$ python3 paramspider.py --domain hackerone.com --placeholder FUZZ2
 
-https://bsky.app/profile/hackingteam.bsky.social
+6 - Using the quiet mode (without printing the URLs on screen)
+$ python3 paramspider.py --domain hackerone.com --quiet
 
-Discord
+7 - Exclude subdomains [for parameters from domain+subdomains, do not specify this argument]
+$ python3 paramspider.py --domain hackerone.com --subs False 
+```
 
-https://discord.gg/V4nPFbQX
+## ParamSpider + GF (for massive pwnage)
 
-Facebook
+  
 
-https://www.facebook.com/groups/hackingteam2022/?ref=share https://www.facebook.com/groups/HackingTeamCyber/?ref=share
+Let's say you have already installed ParamSpider and now you want to filter out the juicy parameters from plethora of parameters. No worries you can easily do it using [GF(by tomnomnom)](https://github.com/tomnomnom/gf) .
 
-Youtube
+  
 
-https://www.youtube.com/@HackingTeamOfficial
+**Note** : Make sure you have [go](https://golang.org/doc/install) properly installed on your machine .
+
+  
+
+**Follow along this:**
+
+```
+$ go get -u github.com/tomnomnom/gf
+$ cp -r $GOPATH/src/github.com/tomnomnom/gf/examples ~/.gf
+
+Note: Replace '/User/levi/go/bin/gf' with the path where gf binary is located in your system.
+
+$ alias gf='/User/levi/go/bin/gf'
+$ cd ~/.gf/
+
+Note: Paste JSON files(https://github.com/0xKayala/ParamSpider/tree/master/gf_profiles) in ~/.gf/ folder
+
+Now run ParamSpider and navigate to the output directory
+
+$ gf redirect domain.txt //for potential open redirect/SSRF parameters
+$ gf xss domain.txt //for potential xss vulnerable parameters
+$ gf potential domain.txt //for xss + ssrf + open redirect parameters
+$ gf wordpress domain.txt //for wordpress urls
+
+[More GF profiles to be added in future]
+```
+
+
+## Example :
+
+```
+$ python3 paramspider.py --domain bugcrowd.com --exclude woff,css,js,png,svg,php,jpg --output bugcrowd.txt
+```
+  
+
+![](https://raw.githubusercontent.com/0xKayala/ParamSpider/master/static/example.PNG)
+
+  
+### Note :
+
+```
+As it fetches the parameters from web archive data,
+so chances of false positives are high.
+```
+
+## Contributing to ParamSpider:
+
+ - Report bugs, missing best practices 
+ - Shoot my [DM](https://twitter.com/0xAsm0d3us) with new ideas 
+ - Make more GF profiles (.json files)
+ - Help in Fixing bugs
+ - Submit Pull requests 
+
+ 
+  
+
+### My Twitter :
+
+
+**Say hello** : [0xAsm0d3us](https://twitter.com/0xAsm0d3us)
