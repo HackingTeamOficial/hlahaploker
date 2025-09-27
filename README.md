@@ -41,17 +41,11 @@ Nuestras RRSS
 
 Telegram
 
-https://t.me/+YWhDjkfmSQ9jY2Jk
-
-https://t.me/+74d-97oV7P05OTVk
-
-https://t.me/+llcmNGzz6JIyMmI0
+https://t.me/+0hHSaKO7eI9mNWY8
 
 https://t.me/PlantillasNucleiHackingTeam
 
 https://t.me/TermuxHackingTeam
-
-https://t.me/+-RIgaFP12_RhNTk0
 
 X
 
